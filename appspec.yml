@@ -7,9 +7,8 @@ files:
  hooks:
   BeforeInstall:
     - location: Scripts/stop-server.sh
-      timeout: 100
-      runas: root
+      runas: ubuntu
   AfterInstall:
     - location: Scripts/Restart.sh
       timeout: 100
-      runas: root
+      runas: ubuntu
