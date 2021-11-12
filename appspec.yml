@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /
+ hooks:
+  BeforeInstall:
+    - location: Scripts/stop-server.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: Scripts/Restart.sh
+      timeout: 300
+      runas: root
