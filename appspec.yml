@@ -3,8 +3,7 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/new_chatapp
-
- hooks:
+hooks:
   BeforeInstall: 
     - location: Scripts/stop_server.sh
       timeout: 300
