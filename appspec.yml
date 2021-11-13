@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu
+    destination: /home/ubuntu/new_chatapp
 
  hooks:
   BeforeInstall:
@@ -10,5 +10,4 @@ files:
       runas: ubuntu
   AfterInstall:
     - location: Scripts/Restart.sh
-      timeout: 100
       runas: ubuntu
