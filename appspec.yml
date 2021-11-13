@@ -8,7 +8,7 @@ files:
   BeforeInstall: 
     - location: /Scripts/stop_server.sh
       timeout: 300
-      runas: root
+       runas: root
   AfterInstall:
     - location: /Scripts/start_server.sh
       timeout: 300
