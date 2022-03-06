@@ -1,0 +1,27 @@
+- stage: Deploy
+  displayName: 'Deploy Chat-app'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: DeploymentJob
+    pool:
+      vmImage: $(vmImageName)
+    environment: 
+      name: dev
+      resourceType: virtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          
+          - task: 'Bash@3'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Modify deployment script based on the app type
+                echo "Starting deployment script run"
+                cd '/home/backend-instance/azagent/_work/1/drop/' && unzip -o $(Build.BuildId).zip -d /home/backend-instance/chatapp
+                rm -rf *.zip
+                source venv/bin/activate
+                pip3 install -r requirements.txt
+                cd '/home/backend-instance/azagent/_work/1/drop/fundoo/' && python3 manage.py migrate
